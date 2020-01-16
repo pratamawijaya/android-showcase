@@ -5,6 +5,7 @@ object GradlePluginVersion {
     const val GRADLE_VERSION_PLUGIN = "0.22.0"
     const val KOTLIN = CoreVersion.KOTLIN
     const val SAFE_ARGS = CoreVersion.NAVIGATION
+    const val JACOCO_ANDROID = "0.15.0"
 }
 
 object GradlePluginId {
@@ -18,6 +19,11 @@ object GradlePluginId {
     const val KOTLIN_ANDROID_EXTENSIONS = "org.jetbrains.kotlin.android.extensions"
     const val GRADLE_VERSION_PLUGIN = "com.github.ben-manes.versions"
     const val SAFE_ARGS = "androidx.navigation.safeargs.kotlin"
+    const val JACOCO_ANDROID = "com.vanniktech.android.junit.jacoco"
+}
+
+object GradleDependency {
+    const val JACOCO_ANDROID = "com.vanniktech:gradle-android-junit-jacoco-plugin:0.15.0"
 }
 
 object GradleOldWayPlugins {

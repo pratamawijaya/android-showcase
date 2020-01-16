@@ -2,6 +2,17 @@ import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("com.vanniktech:gradle-android-junit-jacoco-plugin:0.15.0")
+    }
+}
+
+
 plugins {
     id(GradlePluginId.DETEKT)
     id(GradlePluginId.KTLINT_GRADLE)
@@ -15,6 +26,11 @@ plugins {
     id(GradlePluginId.SAFE_ARGS) apply false
 }
 
+junitJacoco {
+    jacocoVersion = "0.8.2"
+}
+
+
 // all projects = root project + sub projects
 allprojects {
     repositories {
@@ -24,6 +40,9 @@ allprojects {
 
     // We want to apply ktlint at all project level because it also checks build gradle files
     apply(plugin = GradlePluginId.KTLINT_GRADLE)
+    apply(plugins {
+        id("com.vanniktech.android.junit.jacoco") version "0.15.0"
+    })
 
     // Ktlint configuration for sub-projects
     ktlint {
